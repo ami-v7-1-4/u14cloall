@@ -1,0 +1,26 @@
+language: clojure
+
+runtime:
+  nodePool: dynamic__x86_64__Ubuntu_14_04__c4_large
+
+lein:
+ - 1.9.0
+  
+build:
+  pre_ci_boot:
+    image_name: drydock/u14cloall
+    image_tag: master
+    pull: true
+    
+  ci:
+    - lein version
+    - echo "(print *clojure-version*)" > clojure.main  
+    - clj clojure.main
+    - docker pull shippabledocker/sample_node_pvt:ecr
+
+integrations:
+    
+  hub:
+ #Docker integration
+    - integrationName: ship-docker
+      type: dockerRegistryLogin
