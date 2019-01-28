@@ -4,7 +4,7 @@ runtime:
   nodePool: dynamic__x86_64__Ubuntu_14_04__c4_large
 
 lein:
- - 1.9.0
+ - 1.10.0
   
 build:
   pre_ci_boot:
